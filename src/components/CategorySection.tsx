@@ -1,50 +1,50 @@
 
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { Pill, Heart, Baby, Sparkles, Activity, Stethoscope } from 'lucide-react';
+import { BookOpen, GraduationCap, Heart, Baby, Globe, Users } from 'lucide-react';
 
 const categories = [
   {
-    name: 'Medicines',
-    icon: Pill,
-    description: 'Prescription & OTC drugs',
+    name: 'Fiction',
+    icon: BookOpen,
+    description: 'Novels, short stories & classics',
     color: 'bg-blue-50 hover:bg-blue-100',
     iconColor: 'text-blue-600'
   },
   {
-    name: 'Health Care',
-    icon: Stethoscope,
-    description: 'Medical devices & equipment',
+    name: 'Academic',
+    icon: GraduationCap,
+    description: 'Textbooks & educational',
     color: 'bg-green-50 hover:bg-green-100',
     iconColor: 'text-green-600'
   },
   {
-    name: 'Personal Care',
-    icon: Sparkles,
-    description: 'Skincare & hygiene products',
-    color: 'bg-purple-50 hover:bg-purple-100',
-    iconColor: 'text-purple-600'
-  },
-  {
-    name: 'Baby Care',
-    icon: Baby,
-    description: 'Baby food, diapers & more',
+    name: 'Romance',
+    icon: Heart,
+    description: 'Love stories & relationships',
     color: 'bg-pink-50 hover:bg-pink-100',
     iconColor: 'text-pink-600'
   },
   {
-    name: 'Wellness',
-    icon: Activity,
-    description: 'Fitness & nutrition',
-    color: 'bg-orange-50 hover:bg-orange-100',
-    iconColor: 'text-orange-600'
+    name: 'Children',
+    icon: Baby,
+    description: 'Kids books & picture books',
+    color: 'bg-yellow-50 hover:bg-yellow-100',
+    iconColor: 'text-yellow-600'
   },
   {
-    name: 'Women Care',
-    icon: Heart,
-    description: 'Feminine hygiene & health',
-    color: 'bg-red-50 hover:bg-red-100',
-    iconColor: 'text-red-600'
+    name: 'Travel',
+    icon: Globe,
+    description: 'Travel guides & memoirs',
+    color: 'bg-purple-50 hover:bg-purple-100',
+    iconColor: 'text-purple-600'
+  },
+  {
+    name: 'Biography',
+    icon: Users,
+    description: 'Life stories & memoirs',
+    color: 'bg-gray-50 hover:bg-gray-100',
+    iconColor: 'text-gray-600'
   }
 ];
 
@@ -53,9 +53,9 @@ const CategorySection = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Shop by Category</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Browse by Genre</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our wide range of healthcare products, medicines, and wellness solutions
+            Explore our vast collection spanning fiction, non-fiction, academics, and more
           </p>
         </div>
 

@@ -10,16 +10,16 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md relative z-50">
       {/* Top bar */}
-      <div className="bg-brand-teal text-white py-2 px-4">
+      <div className="bg-gray-100 text-gray-700 py-2 px-4">
         <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
               <Phone className="h-3 w-3" />
-              <span>1860-123-4567</span>
+              <span>+91-44-2819-3586</span>
             </div>
             <div className="flex items-center space-x-1">
               <Mail className="h-3 w-3" />
-              <span>care@higginbothams.in</span>
+              <span>info@higginbothams.com</span>
             </div>
           </div>
           <div className="flex items-center space-x-1">
@@ -34,8 +34,10 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-brand-teal">Higginbotham's</h1>
-            <span className="text-sm text-gray-600 ml-2">Since 1844</span>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-gray-800 tracking-wider">HIGGINBOTHAMS</div>
+              <div className="text-xs text-gray-600 font-light">EST. 1844</div>
+            </div>
           </div>
 
           {/* Search bar - desktop */}
@@ -43,12 +45,12 @@ const Header = () => {
             <div className="relative w-full">
               <Input
                 type="text"
-                placeholder="Search for medicines, health products..."
-                className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal"
+                placeholder="Search for books, authors, genres..."
+                className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-gray-400"
               />
               <Button
                 size="sm"
-                className="absolute right-1 top-1 bg-brand-teal hover:bg-brand-teal-dark text-white"
+                className="absolute right-1 top-1 bg-gray-800 hover:bg-gray-700 text-white"
               >
                 <Search className="h-4 w-4" />
               </Button>
@@ -63,7 +65,7 @@ const Header = () => {
             </Button>
             <Button variant="ghost" className="relative">
               <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-2 -right-2 bg-brand-orange text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 0
               </span>
             </Button>
@@ -82,12 +84,12 @@ const Header = () => {
           <div className="relative">
             <Input
               type="text"
-              placeholder="Search medicines..."
-              className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-teal"
+              placeholder="Search books..."
+              className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-gray-400"
             />
             <Button
               size="sm"
-              className="absolute right-1 top-1 bg-brand-teal hover:bg-brand-teal-dark text-white"
+              className="absolute right-1 top-1 bg-gray-800 hover:bg-gray-700 text-white"
             >
               <Search className="h-4 w-4" />
             </Button>
@@ -100,12 +102,11 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
             <ul className="flex flex-col md:flex-row md:space-x-8 py-4">
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Medicines</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Health Care</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Personal Care</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Baby Care</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Wellness</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-brand-teal font-medium">Upload Prescription</a></li>
+              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Home</a></li>
+              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">About Us</a></li>
+              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">New Releases</a></li>
+              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Events</a></li>
+              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Contact</a></li>
             </ul>
           </div>
         </div>

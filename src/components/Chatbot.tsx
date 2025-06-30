@@ -17,7 +17,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! I'm your Higginbotham's assistant. How can I help you today?",
+      text: "Hello! I'm your Higginbotham's literary assistant. How can I help you find your next great read?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -35,19 +35,21 @@ const Chatbot = () => {
   }, [messages]);
 
   const predefinedResponses: { [key: string]: string } = {
-    'hello': 'Hi there! How can I assist you with your healthcare needs today?',
-    'hi': 'Hello! Welcome to Higginbotham\'s. What can I help you find?',
-    'help': 'I can help you with:\n• Finding medicines and products\n• Prescription uploads\n• Store locations\n• Order tracking\n• Health advice',
-    'medicine': 'I can help you find medicines. Please tell me the name of the medicine you\'re looking for, or upload your prescription.',
-    'prescription': 'You can easily upload your prescription by clicking the "Upload Prescription" button on our homepage. We\'ll process it and deliver your medicines to your doorstep.',
-    'delivery': 'We offer free delivery on orders above ₹499. Same-day delivery is available in select cities. Standard delivery takes 1-2 business days.',
-    'store': 'We have 750+ stores across India. You can find your nearest store using our store locator on the website.',
-    'price': 'Our prices are competitive and we offer regular discounts. You can compare prices on our website before making a purchase.',
-    'genuine': 'All our medicines are 100% genuine and sourced directly from authorized distributors. We guarantee authenticity.',
-    'order': 'You can track your order by logging into your account or using the order tracking feature on our website.',
-    'payment': 'We accept all major payment methods including credit/debit cards, UPI, net banking, and cash on delivery.',
-    'return': 'We have a hassle-free return policy. You can return unopened medicines within 7 days of delivery.',
-    'contact': 'You can reach us at:\n📞 1860-123-4567\n📧 care@higginbothams.in\n🕒 Available 24/7'
+    'hello': 'Hi there! Welcome to Higginbothams. What kind of books are you looking for today?',
+    'hi': 'Hello! I\'m here to help you discover amazing books. What genre interests you?',
+    'help': 'I can help you with:\n• Finding books by genre, author, or title\n• Book recommendations\n• Store locations\n• New releases\n• Literary events\n• Order assistance',
+    'fiction': 'We have an amazing fiction collection! Are you looking for contemporary fiction, classics, literary fiction, or perhaps a specific author?',
+    'book': 'I\'d love to help you find the perfect book! Could you tell me what genre you\'re interested in or if you have a specific author in mind?',
+    'recommend': 'I\'d be happy to recommend books! What are some of your favorite books or genres? This will help me suggest something you\'ll love.',
+    'author': 'Which author are you looking for? We have works from classic authors like Dickens and Austen to contemporary writers like Haruki Murakami and Chimamanda Ngozi Adichie.',
+    'store': 'We have 40+ stores across India! Our flagship store is on Anna Salai in Chennai. You can find your nearest store using our store locator.',
+    'new': 'We get new releases every week! Currently popular are "The Seven Husbands of Evelyn Hugo", "Atomic Habits", and "The Silent Patient". What genre interests you?',
+    'price': 'Our book prices vary by title and format. We offer competitive pricing and regular discounts. Paperbacks typically range from ₹200-600.',
+    'events': 'We regularly host book launches, author interactions, and literary events at our stores. Check our events page for upcoming programs!',
+    'children': 'We have a wonderful children\'s section with picture books, early readers, middle grade, and young adult titles. What age group are you shopping for?',
+    'academic': 'Our academic section covers textbooks for schools and colleges across various subjects. Which subject or level are you looking for?',
+    'order': 'You can order books online through our website or visit any of our 40+ stores. We also offer home delivery in select cities.',
+    'contact': 'You can reach us at:\n📞 +91-44-2819-3586\n📧 info@higginbothams.com\n📍 814 Anna Salai, Chennai\n🕒 Mon-Sun: 9:30 AM - 9:00 PM'
   };
 
   const getBotResponse = (userMessage: string): string => {
@@ -61,7 +63,7 @@ const Chatbot = () => {
     }
     
     // Default response
-    return "I understand you're asking about '" + userMessage + "'. For specific medical advice or detailed product information, please consult with our pharmacists at 1860-123-4567 or visit your nearest store.";
+    return "That's an interesting question about '" + userMessage + "'. For specific book recommendations or detailed information, I'd suggest visiting one of our stores where our knowledgeable staff can assist you personally. You can also call us at +91-44-2819-3586.";
   };
 
   const handleSendMessage = async () => {
@@ -99,11 +101,11 @@ const Chatbot = () => {
   };
 
   const quickActions = [
-    'Find medicines',
-    'Upload prescription',
+    'Book recommendations',
+    'Fiction books',
+    'New releases',
     'Store locations',
-    'Track order',
-    'Contact support'
+    'Contact us'
   ];
 
   return (
@@ -112,7 +114,7 @@ const Chatbot = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-brand-teal hover:bg-brand-teal-dark text-white rounded-full p-4 shadow-lg animate-pulse"
+          className="fixed bottom-6 right-6 z-50 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-4 shadow-lg animate-pulse"
           size="lg"
         >
           <MessageCircle className="h-6 w-6" />
@@ -123,7 +125,7 @@ const Chatbot = () => {
       {isOpen && (
         <Card className="fixed bottom-6 right-6 z-50 w-80 h-96 flex flex-col shadow-2xl animate-slide-up">
           {/* Header */}
-          <div className="bg-brand-teal text-white p-4 rounded-t-lg flex justify-between items-center">
+          <div className="bg-gray-800 text-white p-4 rounded-t-lg flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <Bot className="h-5 w-5" />
               <span className="font-semibold">Higginbotham's Assistant</span>
@@ -148,12 +150,12 @@ const Chatbot = () => {
                 <div
                   className={`max-w-xs p-3 rounded-lg ${
                     message.sender === 'user'
-                      ? 'bg-brand-teal text-white'
+                      ? 'bg-gray-800 text-white'
                       : 'bg-white border shadow-sm'
                   }`}
                 >
                   <div className="flex items-start space-x-2">
-                    {message.sender === 'bot' && <Bot className="h-4 w-4 mt-0.5 text-brand-teal" />}
+                    {message.sender === 'bot' && <Bot className="h-4 w-4 mt-0.5 text-gray-800" />}
                     {message.sender === 'user' && <User className="h-4 w-4 mt-0.5" />}
                     <div>
                       <p className="text-sm whitespace-pre-line">{message.text}</p>
@@ -170,7 +172,7 @@ const Chatbot = () => {
               <div className="mb-4 flex justify-start">
                 <div className="bg-white border shadow-sm p-3 rounded-lg">
                   <div className="flex items-center space-x-2">
-                    <Bot className="h-4 w-4 text-brand-teal" />
+                    <Bot className="h-4 w-4 text-gray-800" />
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
@@ -208,12 +210,12 @@ const Chatbot = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder="Ask about books..."
                 className="flex-1 text-sm"
               />
               <Button
                 onClick={handleSendMessage}
-                className="bg-brand-teal hover:bg-brand-teal-dark text-white p-2"
+                className="bg-gray-800 hover:bg-gray-700 text-white p-2"
                 disabled={!inputMessage.trim()}
               >
                 <Send className="h-4 w-4" />
