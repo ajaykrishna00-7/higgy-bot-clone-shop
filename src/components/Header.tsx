@@ -9,9 +9,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md relative z-50">
-      {/* Top bar */}
-      <div className="bg-gray-100 text-gray-700 py-2 px-4">
+    <header className="bg-parchment-50 shadow-lg relative z-50 vintage-paper">
+      {/* Top bar with vintage styling */}
+      <div className="bg-leather-700 text-parchment-100 py-2 px-4">
         <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
@@ -30,28 +30,32 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main header */}
-      <div className="container mx-auto px-4 py-4">
+      {/* Main header with old bookshop styling */}
+      <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with vintage typography */}
           <Link to="/" className="flex items-center">
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-800 tracking-wider">HIGGINBOTHAMS</div>
-              <div className="text-xs text-gray-600 font-light">EST. 1844</div>
+              <div className="text-3xl font-display font-bold text-leather-800 tracking-wider mb-1">
+                HIGGINBOTHAMS
+              </div>
+              <div className="text-xs text-leather-600 font-serif italic tracking-wide">
+                Est. 1844 • India's Oldest Bookstore
+              </div>
             </div>
           </Link>
 
-          {/* Search bar - desktop */}
+          {/* Search bar with vintage styling */}
           <div className="hidden md:flex flex-1 max-w-2xl mx-8">
             <div className="relative w-full">
               <Input
                 type="text"
                 placeholder="Search for books, authors, genres..."
-                className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-gray-400"
+                className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50 vintage-paper"
               />
               <Button
                 size="sm"
-                className="absolute right-1 top-1 bg-gray-800 hover:bg-gray-700 text-white"
+                className="absolute right-1 top-1 leather-texture text-parchment-50 hover:bg-leather-600"
               >
                 <Search className="h-4 w-4" />
               </Button>
@@ -60,19 +64,19 @@ const Header = () => {
 
           {/* Right section */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="hidden md:flex items-center space-x-2">
+            <Button variant="ghost" className="hidden md:flex items-center space-x-2 text-leather-700 hover:text-leather-800 hover:bg-parchment-100">
               <User className="h-5 w-5" />
-              <span>Account</span>
+              <span className="font-serif">Account</span>
             </Button>
-            <Button variant="ghost" className="relative">
+            <Button variant="ghost" className="relative text-leather-700 hover:text-leather-800 hover:bg-parchment-100">
               <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-leather-600 text-parchment-50 text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 0
               </span>
             </Button>
             <Button
               variant="ghost"
-              className="md:hidden"
+              className="md:hidden text-leather-700 hover:text-leather-800"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -86,11 +90,11 @@ const Header = () => {
             <Input
               type="text"
               placeholder="Search books..."
-              className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:border-gray-400"
+              className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50"
             />
             <Button
               size="sm"
-              className="absolute right-1 top-1 bg-gray-800 hover:bg-gray-700 text-white"
+              className="absolute right-1 top-1 leather-texture text-parchment-50"
             >
               <Search className="h-4 w-4" />
             </Button>
@@ -98,16 +102,16 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="bg-gray-50 border-t">
+      {/* Navigation with aged paper styling */}
+      <nav className="bg-parchment-100 border-t border-leather-300 aged-border">
         <div className="container mx-auto px-4">
           <div className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
             <ul className="flex flex-col md:flex-row md:space-x-8 py-4">
-              <li><Link to="/" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Home</Link></li>
-              <li><Link to="/about" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">About Us</Link></li>
-              <li><Link to="/news-events" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">News & Events</Link></li>
-              <li><Link to="/new-releases" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">New Releases</Link></li>
-              <li><Link to="/contact" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Contact</Link></li>
+              <li><Link to="/" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">Home</Link></li>
+              <li><Link to="/about" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">About Us</Link></li>
+              <li><Link to="/news-events" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">News & Events</Link></li>
+              <li><Link to="/new-releases" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">New Releases</Link></li>
+              <li><Link to="/contact" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>

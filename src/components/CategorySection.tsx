@@ -7,55 +7,61 @@ const categories = [
   {
     name: 'Fiction',
     icon: BookOpen,
-    description: 'Novels, short stories & classics',
-    color: 'bg-blue-50 hover:bg-blue-100',
-    iconColor: 'text-blue-600'
+    description: 'Novels, classics & literature',
+    color: 'bg-parchment-100 hover:bg-parchment-200',
+    iconColor: 'text-leather-600',
+    borderColor: 'border-leather-300'
   },
   {
     name: 'Academic',
     icon: GraduationCap,
-    description: 'Textbooks & educational',
-    color: 'bg-green-50 hover:bg-green-100',
-    iconColor: 'text-green-600'
+    description: 'Textbooks & scholarly works',
+    color: 'bg-leather-50 hover:bg-leather-100',
+    iconColor: 'text-leather-700',
+    borderColor: 'border-leather-400'
   },
   {
     name: 'Romance',
     icon: Heart,
     description: 'Love stories & relationships',
-    color: 'bg-pink-50 hover:bg-pink-100',
-    iconColor: 'text-pink-600'
+    color: 'bg-parchment-200 hover:bg-parchment-300',
+    iconColor: 'text-leather-500',
+    borderColor: 'border-leather-300'
   },
   {
     name: 'Children',
     icon: Baby,
-    description: 'Kids books & picture books',
-    color: 'bg-yellow-50 hover:bg-yellow-100',
-    iconColor: 'text-yellow-600'
+    description: 'Kids books & picture stories',
+    color: 'bg-parchment-100 hover:bg-parchment-200',
+    iconColor: 'text-leather-600',
+    borderColor: 'border-leather-300'
   },
   {
     name: 'Travel',
     icon: Globe,
     description: 'Travel guides & memoirs',
-    color: 'bg-purple-50 hover:bg-purple-100',
-    iconColor: 'text-purple-600'
+    color: 'bg-leather-100 hover:bg-leather-200',
+    iconColor: 'text-leather-700',
+    borderColor: 'border-leather-400'
   },
   {
     name: 'Biography',
     icon: Users,
     description: 'Life stories & memoirs',
-    color: 'bg-gray-50 hover:bg-gray-100',
-    iconColor: 'text-gray-600'
+    color: 'bg-parchment-200 hover:bg-parchment-300',
+    iconColor: 'text-leather-600',
+    borderColor: 'border-leather-300'
   }
 ];
 
 const CategorySection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 vintage-paper">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Browse by Genre</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our vast collection spanning fiction, non-fiction, academics, and more
+          <h2 className="text-4xl font-display font-bold text-leather-800 mb-4">Literary Collections</h2>
+          <p className="text-leather-600 max-w-2xl mx-auto font-serif text-lg">
+            Explore our carefully curated selection of books spanning diverse genres and timeless wisdom
           </p>
         </div>
 
@@ -65,15 +71,15 @@ const CategorySection = () => {
             return (
               <Card 
                 key={category.name}
-                className={`p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${category.color}`}
+                className={`p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-2 animate-fade-in aged-border ${category.color} ${category.borderColor}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex flex-col items-center">
-                  <div className={`p-3 rounded-full bg-white shadow-sm mb-4`}>
+                  <div className={`p-4 rounded-full bg-parchment-50 shadow-md mb-4 border-2 ${category.borderColor}`}>
                     <IconComponent className={`h-6 w-6 ${category.iconColor}`} />
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">{category.name}</h3>
-                  <p className="text-sm text-gray-600">{category.description}</p>
+                  <h3 className="font-display font-semibold text-leather-800 mb-2">{category.name}</h3>
+                  <p className="text-sm text-leather-600 font-serif">{category.description}</p>
                 </div>
               </Card>
             );

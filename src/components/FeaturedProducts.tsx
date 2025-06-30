@@ -53,59 +53,59 @@ const books = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="py-16">
+    <section className="py-16 bg-parchment-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Bestsellers</h2>
-          <p className="text-gray-600">Top-rated books loved by our readers</p>
+          <h2 className="text-4xl font-display font-bold text-leather-800 mb-4">Recommended Reads</h2>
+          <p className="text-leather-600 font-serif text-lg">Handpicked favorites from our literary collection</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {books.map((book, index) => (
             <Card 
               key={book.id} 
-              className="overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-book-open vintage-paper aged-border"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
               <div className="relative">
                 <img
                   src={book.image}
                   alt={book.title}
-                  className="w-full h-64 object-cover bg-gray-100"
+                  className="w-full h-64 object-cover bg-parchment-200"
                 />
-                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                <div className="absolute top-2 right-2 bg-leather-600 text-parchment-100 text-xs px-3 py-1 rounded-full font-serif">
                   {Math.round(((book.originalPrice - book.price) / book.originalPrice) * 100)}% OFF
                 </div>
-                <div className="absolute top-2 left-2 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+                <div className="absolute top-2 left-2 bg-parchment-100 text-leather-700 text-xs px-3 py-1 rounded-full border border-leather-300 font-serif">
                   {book.genre}
                 </div>
               </div>
               
-              <div className="p-4">
-                <div className="text-sm text-gray-500 mb-1">{book.author}</div>
-                <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2">{book.title}</h3>
+              <div className="p-5">
+                <div className="text-sm text-leather-500 mb-1 font-serif italic">{book.author}</div>
+                <h3 className="font-display font-semibold text-leather-800 mb-3 line-clamp-2 text-lg">{book.title}</h3>
                 
-                <div className="flex items-center mb-2">
+                <div className="flex items-center mb-3">
                   <div className="flex items-center">
-                    <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                    <span className="ml-1 text-sm text-gray-600">{book.rating}</span>
+                    <Star className="h-4 w-4 text-amber-500 fill-current" />
+                    <span className="ml-1 text-sm text-leather-600 font-serif">{book.rating}</span>
                   </div>
-                  <span className="text-xs text-gray-500 ml-2">({book.reviews} reviews)</span>
+                  <span className="text-xs text-leather-500 ml-2 font-serif">({book.reviews} reviews)</span>
                 </div>
 
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <span className="text-lg font-bold text-gray-800">₹{book.price}</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">₹{book.originalPrice}</span>
+                    <span className="text-xl font-display font-bold text-leather-800">₹{book.price}</span>
+                    <span className="text-sm text-leather-500 line-through ml-2 font-serif">₹{book.originalPrice}</span>
                   </div>
                 </div>
 
                 <Button 
-                  className="w-full bg-gray-800 hover:bg-gray-700 text-white"
+                  className="w-full leather-texture text-parchment-50 hover:bg-leather-600 font-serif shadow-md"
                   size="sm"
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />
-                  Add to Cart
+                  Add to Library
                 </Button>
               </div>
             </Card>
@@ -116,9 +116,9 @@ const FeaturedProducts = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
+            className="border-2 border-leather-600 text-leather-700 hover:bg-leather-700 hover:text-parchment-50 font-serif px-8 py-3 aged-border"
           >
-            View All Books
+            Explore Complete Collection
           </Button>
         </div>
       </div>

@@ -5,62 +5,72 @@ import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail } from 'luci
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="leather-texture text-parchment-100 relative">
+      {/* Vintage pattern overlay */}
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: `
+          radial-gradient(circle at 30% 30%, rgba(255, 248, 240, 0.1) 2px, transparent 2px),
+          radial-gradient(circle at 70% 70%, rgba(255, 248, 240, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px, 25px 25px'
+      }}></div>
+      
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
+          {/* Company Info with vintage styling */}
           <div>
-            <h3 className="text-xl font-bold mb-4">HIGGINBOTHAMS</h3>
-            <p className="text-gray-300 mb-4">
-              India's oldest bookstore since 1844. Where history meets literature across 40+ stores nationwide.
+            <h3 className="text-2xl font-display font-bold mb-4">HIGGINBOTHAMS</h3>
+            <p className="text-parchment-200 mb-4 font-serif leading-relaxed">
+              India's oldest bookstore since 1844. A literary sanctuary where tradition meets 
+              contemporary reading across four decades of locations nationwide.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-              <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-              <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-              <Youtube className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+              <Facebook className="h-5 w-5 text-parchment-300 hover:text-parchment-100 cursor-pointer transition-colors" />
+              <Twitter className="h-5 w-5 text-parchment-300 hover:text-parchment-100 cursor-pointer transition-colors" />
+              <Instagram className="h-5 w-5 text-parchment-300 hover:text-parchment-100 cursor-pointer transition-colors" />
+              <Youtube className="h-5 w-5 text-parchment-300 hover:text-parchment-100 cursor-pointer transition-colors" />
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-display font-semibold mb-4 text-lg">Literary Services</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white">About Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Store Locator</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">New Releases</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Book Events</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Careers</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">About Our Heritage</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Store Locator</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">New Arrivals</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Literary Events</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Join Our Team</a></li>
             </ul>
           </div>
 
           {/* Categories */}
           <div>
-            <h4 className="font-semibold mb-4">Book Categories</h4>
+            <h4 className="font-display font-semibold mb-4 text-lg">Book Collections</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white">Fiction</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Non-Fiction</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Academic</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Children's Books</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Regional Literature</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Classic Literature</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Contemporary Fiction</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Academic Texts</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Children's Literature</a></li>
+              <li><a href="#" className="text-parchment-200 hover:text-parchment-100 font-serif transition-colors">Regional Works</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
+            <h4 className="font-display font-semibold mb-4 text-lg">Connect With Us</h4>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-3 text-gray-400" />
-                <span className="text-gray-300">+91-44-2819-3586</span>
+                <Phone className="h-4 w-4 mr-3 text-parchment-300" />
+                <span className="text-parchment-200 font-serif">+91-44-2819-3586</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-3 text-gray-400" />
-                <span className="text-gray-300">info@higginbothams.com</span>
+                <Mail className="h-4 w-4 mr-3 text-parchment-300" />
+                <span className="text-parchment-200 font-serif">info@higginbothams.com</span>
               </div>
               <div className="flex items-start">
-                <MapPin className="h-4 w-4 mr-3 text-gray-400 mt-1" />
-                <span className="text-gray-300">
+                <MapPin className="h-4 w-4 mr-3 text-parchment-300 mt-1" />
+                <span className="text-parchment-200 font-serif">
                   814 Anna Salai<br />
                   Chennai, Tamil Nadu 600002
                 </span>
@@ -69,14 +79,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <Separator className="my-8 bg-gray-700" />
+        <Separator className="my-8 bg-leather-500" />
 
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-parchment-300 text-sm font-serif">
             © 2024 Higginbothams. All rights reserved.
           </p>
-          <p className="text-gray-400 text-sm mt-2 md:mt-0">
-            India's oldest bookstore since 1844
+          <p className="text-parchment-300 text-sm mt-2 md:mt-0 font-serif italic">
+            Preserving India's literary heritage since 1844
           </p>
         </div>
       </div>
