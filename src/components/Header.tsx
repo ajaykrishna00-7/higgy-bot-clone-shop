@@ -3,10 +3,24 @@ import React, { useState } from 'react';
 import { Search, ShoppingCart, User, Menu, X, MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSearch } from '@/contexts/SearchContext';
+import { useAuth } from '@/contexts/AuthContext';
+import AccountModal from './AccountModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [localSearchQuery, setLocalSearchQuery] = useState('');
+  const { setSearchQuery } = useSearch();
+  const { user, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchQuery(localSearchQuery);
+    navigate('/search');
+  };
 
   return (
     <header className="bg-parchment-50 shadow-lg relative z-50 vintage-paper">
@@ -47,26 +61,35 @@ const Header = () => {
 
           {/* Search bar with vintage styling */}
           <div className="hidden md:flex flex-1 max-w-2xl mx-8">
-            <div className="relative w-full">
+            <form onSubmit={handleSearch} className="relative w-full">
               <Input
                 type="text"
                 placeholder="Search for books, authors, genres..."
-                className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50 vintage-paper"
+                value={localSearchQuery}
+                onChange={(e) => setLocalSearchQuery(e.target.value)}
+                className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50 vintage-paper font-serif"
               />
               <Button
+                type="submit"
                 size="sm"
                 className="absolute right-1 top-1 leather-texture text-parchment-50 hover:bg-leather-600"
               >
                 <Search className="h-4 w-4" />
               </Button>
-            </div>
+            </form>
           </div>
 
           {/* Right section */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="hidden md:flex items-center space-x-2 text-leather-700 hover:text-leather-800 hover:bg-parchment-100">
+            <Button 
+              variant="ghost" 
+              className="hidden md:flex items-center space-x-2 text-leather-700 hover:text-leather-800 hover:bg-parchment-100"
+              onClick={() => setIsAccountModalOpen(true)}
+            >
               <User className="h-5 w-5" />
-              <span className="font-serif">Account</span>
+              <span className="font-serif">
+                {isAuthenticated ? user?.name?.split(' ')[0] : 'Account'}
+              </span>
             </Button>
             <Button variant="ghost" className="relative text-leather-700 hover:text-leather-800 hover:bg-parchment-100">
               <ShoppingCart className="h-5 w-5" />
@@ -86,19 +109,22 @@ const Header = () => {
 
         {/* Mobile search */}
         <div className="md:hidden mt-4">
-          <div className="relative">
+          <form onSubmit={handleSearch} className="relative">
             <Input
               type="text"
               placeholder="Search books..."
-              className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50"
+              value={localSearchQuery}
+              onChange={(e) => setLocalSearchQuery(e.target.value)}
+              className="w-full pl-4 pr-12 py-3 border-2 border-leather-300 rounded-lg focus:border-leather-500 bg-parchment-50 font-serif"
             />
             <Button
+              type="submit"
               size="sm"
               className="absolute right-1 top-1 leather-texture text-parchment-50"
             >
               <Search className="h-4 w-4" />
             </Button>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -111,11 +137,26 @@ const Header = () => {
               <li><Link to="/about" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">About Us</Link></li>
               <li><Link to="/news-events" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">News & Events</Link></li>
               <li><Link to="/new-releases" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">New Releases</Link></li>
+              <li><Link to="/search" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">All Books</Link></li>
               <li><Link to="/contact" className="block py-2 text-leather-700 hover:text-leather-800 font-serif font-medium transition-colors">Contact</Link></li>
+              <li className="md:hidden">
+                <Button 
+                  variant="ghost" 
+                  className="flex items-center space-x-2 text-leather-700 hover:text-leather-800 hover:bg-parchment-100 py-2"
+                  onClick={() => setIsAccountModalOpen(true)}
+                >
+                  <User className="h-5 w-5" />
+                  <span className="font-serif">
+                    {isAuthenticated ? user?.name?.split(' ')[0] : 'Account'}
+                  </span>
+                </Button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
+
+      <AccountModal isOpen={isAccountModalOpen} onClose={() => setIsAccountModalOpen(false)} />
     </header>
   );
 };

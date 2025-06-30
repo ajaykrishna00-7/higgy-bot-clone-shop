@@ -3,55 +3,16 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ShoppingCart } from 'lucide-react';
-
-const books = [
-  {
-    id: 1,
-    title: 'The Seven Husbands of Evelyn Hugo',
-    author: 'Taylor Jenkins Reid',
-    price: 399,
-    originalPrice: 499,
-    rating: 4.6,
-    reviews: 1234,
-    image: '/placeholder.svg',
-    genre: 'Fiction'
-  },
-  {
-    id: 2,
-    title: 'Atomic Habits',
-    author: 'James Clear',
-    price: 450,
-    originalPrice: 550,
-    rating: 4.8,
-    reviews: 892,
-    image: '/placeholder.svg',
-    genre: 'Self-Help'
-  },
-  {
-    id: 3,
-    title: 'The Silent Patient',
-    author: 'Alex Michaelides',
-    price: 350,
-    originalPrice: 450,
-    rating: 4.4,
-    reviews: 567,
-    image: '/placeholder.svg',
-    genre: 'Thriller'
-  },
-  {
-    id: 4,
-    title: 'Educated',
-    author: 'Tara Westover',
-    price: 425,
-    originalPrice: 525,
-    rating: 4.7,
-    reviews: 743,
-    image: '/placeholder.svg',
-    genre: 'Memoir'
-  }
-];
+import { useSearch } from '@/contexts/SearchContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 const FeaturedProducts = () => {
+  const { allBooks } = useSearch();
+  const { isAuthenticated } = useAuth();
+  
+  // Show first 4 books as featured
+  const featuredBooks = allBooks.slice(0, 4);
+
   return (
     <section className="py-16 bg-parchment-50">
       <div className="container mx-auto px-4">
@@ -61,7 +22,7 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {books.map((book, index) => (
+          {featuredBooks.map((book, index) => (
             <Card 
               key={book.id} 
               className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-book-open vintage-paper aged-border"
@@ -71,7 +32,7 @@ const FeaturedProducts = () => {
                 <img
                   src={book.image}
                   alt={book.title}
-                  className="w-full h-64 object-cover bg-parchment-200"
+                  className="w-full h-64 object-cover"
                 />
                 <div className="absolute top-2 right-2 bg-leather-600 text-parchment-100 text-xs px-3 py-1 rounded-full font-serif">
                   {Math.round(((book.originalPrice - book.price) / book.originalPrice) * 100)}% OFF
@@ -93,6 +54,8 @@ const FeaturedProducts = () => {
                   <span className="text-xs text-leather-500 ml-2 font-serif">({book.reviews} reviews)</span>
                 </div>
 
+                <p className="text-sm text-leather-600 mb-4 font-serif line-clamp-2">{book.description}</p>
+
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <span className="text-xl font-display font-bold text-leather-800">₹{book.price}</span>
@@ -103,9 +66,10 @@ const FeaturedProducts = () => {
                 <Button 
                   className="w-full leather-texture text-parchment-50 hover:bg-leather-600 font-serif shadow-md"
                   size="sm"
+                  disabled={!isAuthenticated}
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />
-                  Add to Library
+                  {isAuthenticated ? 'Add to Library' : 'Login to Purchase'}
                 </Button>
               </div>
             </Card>
@@ -117,6 +81,7 @@ const FeaturedProducts = () => {
             variant="outline" 
             size="lg" 
             className="border-2 border-leather-600 text-leather-700 hover:bg-leather-700 hover:text-parchment-50 font-serif px-8 py-3 aged-border"
+            onClick={() => window.location.href = '/search'}
           >
             Explore Complete Collection
           </Button>
