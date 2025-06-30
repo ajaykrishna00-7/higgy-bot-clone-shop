@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Search, ShoppingCart, User, Menu, X, MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,12 +34,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="text-center">
               <div className="text-2xl font-bold text-gray-800 tracking-wider">HIGGINBOTHAMS</div>
               <div className="text-xs text-gray-600 font-light">EST. 1844</div>
             </div>
-          </div>
+          </Link>
 
           {/* Search bar - desktop */}
           <div className="hidden md:flex flex-1 max-w-2xl mx-8">
@@ -102,11 +103,11 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
             <ul className="flex flex-col md:flex-row md:space-x-8 py-4">
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Home</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">About Us</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">New Releases</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Events</a></li>
-              <li><a href="#" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Contact</a></li>
+              <li><Link to="/" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Home</Link></li>
+              <li><Link to="/about" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">About Us</Link></li>
+              <li><Link to="/news-events" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">News & Events</Link></li>
+              <li><Link to="/new-releases" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">New Releases</Link></li>
+              <li><Link to="/contact" className="block py-2 text-gray-700 hover:text-gray-900 font-medium">Contact</Link></li>
             </ul>
           </div>
         </div>
